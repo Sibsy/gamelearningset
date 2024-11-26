@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://l3a6kt4ogebb"
+path="res://.godot/imported/Dark Piano Solo Loop.ogg-44dca1149d233b8c6f71c6242bb2d48d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Common/Assets/Audio/Dark Piano Solo Loop.ogg"
+dest_files=["res://.godot/imported/Dark Piano Solo Loop.ogg-44dca1149d233b8c6f71c6242bb2d48d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

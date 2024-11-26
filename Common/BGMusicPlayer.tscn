@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://14qdlbefgd6a"]
+
+[ext_resource type="Script" path="res://Common/bg_music_player.gd" id="1_jwc5h"]
+
+[node name="BgMusicPlayer" type="Node"]
+script = ExtResource("1_jwc5h")
+
+[node name="BGMPlayer1" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
+
+[node name="BGMPlayer2" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+bus = &"BGM"

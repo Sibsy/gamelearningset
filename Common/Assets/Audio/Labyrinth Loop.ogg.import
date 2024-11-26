@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c2bb2c8ca1g1u"
+path="res://.godot/imported/Labyrinth Loop.ogg-114e230432ebed1a5becf29eaa443bfd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Common/Assets/Audio/Labyrinth Loop.ogg"
+dest_files=["res://.godot/imported/Labyrinth Loop.ogg-114e230432ebed1a5becf29eaa443bfd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
