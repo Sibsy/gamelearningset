@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnp4wxlkg6yhl"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_va4ng"]
+[ext_resource type="Texture2D" uid="uid://smrnef6mosw" path="res://G1-Pong/Assets/PongBallSprite.png" id="2_yton4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qtp8e"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_250o6"]
+size = Vector2(2, 2)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kwkdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yton4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_qtp8e")
+gravity_scale = 0.0
+script = ExtResource("1_va4ng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_250o6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kwkdu")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c626hq6xpjxyx"]
+
+[ext_resource type="Script" path="res://G1-Pong/pong_player.gd" id="1_ib852"]
+[ext_resource type="Texture2D" uid="uid://dxljkcfec0gka" path="res://G1-Pong/Assets/PongSprite.png" id="2_6n1dy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lutpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6n1dy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd7wy"]
+size = Vector2(3, 9)
+
+[node name="PongPlayer" type="Area2D"]
+script = ExtResource("1_ib852")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lutpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rd7wy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://blishty7ub5p0"]
+
+[ext_resource type="Script" path="res://G1-Pong/pong_vs_wall.gd" id="1_dwp3s"]
+[ext_resource type="PackedScene" uid="uid://bnp4wxlkg6yhl" path="res://G1-Pong/PongBall.tscn" id="2_3pct5"]
+[ext_resource type="PackedScene" uid="uid://c626hq6xpjxyx" path="res://G1-Pong/PongPlayer.tscn" id="3_1wy8f"]
+
+[node name="PongVsWall" type="Node"]
+script = ExtResource("1_dwp3s")
+ball_scene = ExtResource("2_3pct5")
+
+[node name="PongPlayer" parent="." instance=ExtResource("3_1wy8f")]
+
+[node name="BallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(30, 300)
+
+[node name="BallSpawn" type="Marker2D" parent="."]
+position = Vector2(607, 318)
+
+[connection signal="hit" from="PongPlayer" to="." method="_on_pong_player_hit"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
