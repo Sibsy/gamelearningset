@@ -32,14 +32,23 @@ func _process(delta: float) -> void:
 		velocity = velocity.normalized() * speed;
 		
 	position += velocity * delta;
-	
 	var height = (comparison*9)/2
-	
 	position.y = clamp(position.y, height, screen_size.y-height);
 	pass
 
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Hit");
-	hit.emit();
+func _on_body_entered(body: Area2D) -> void:
+	if body.name == "BALLY":
+		body.direction = Vector2(1, randf() * 2 -1).normalized();
+		print("Hit");
+		hit.emit();
+	pass # Replace with function body.
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == "BALLY":
+		#area.direction = Vector2(1, randf() * 2 -1).normalized();
+		area.direction = Vector2(1, randf() * 2 -1).normalized();
+		print("Hit");
+		hit.emit();
 	pass # Replace with function body.

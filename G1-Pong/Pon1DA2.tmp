@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://blishty7ub5p0"]
+
+[ext_resource type="Script" path="res://G1-Pong/pong_vs_wall.gd" id="1_dwp3s"]
+[ext_resource type="PackedScene" uid="uid://bnp4wxlkg6yhl" path="res://G1-Pong/PongBall.tscn" id="2_3pct5"]
+[ext_resource type="PackedScene" uid="uid://c626hq6xpjxyx" path="res://G1-Pong/PongPlayer.tscn" id="3_1wy8f"]
+[ext_resource type="PackedScene" uid="uid://dg7sfvssnax1t" path="res://G1-Pong/PongBallCharBod.tscn" id="3_v1kem"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l45jg"]
+a = Vector2(0, 8)
+b = Vector2(1152, 8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5p4fk"]
+a = Vector2(1144, 648)
+b = Vector2(1144, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w11nl"]
+a = Vector2(1152, 640)
+b = Vector2(0, 640)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i4mig"]
+a = Vector2(0, -8)
+b = Vector2(0, 640)
+
+[node name="PongVsWall" type="Node"]
+script = ExtResource("1_dwp3s")
+ball_scene = ExtResource("2_3pct5")
+ball_scenev2 = ExtResource("3_v1kem")
+
+[node name="PongPlayer" parent="." instance=ExtResource("3_1wy8f")]
+visible = false
+
+[node name="BallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(30, 300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="TOP" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_l45jg")
+one_way_collision_margin = 10.0
+
+[node name="SIDE" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_5p4fk")
+one_way_collision_margin = 10.0
+debug_color = Color(1, 1, 1, 1)
+
+[node name="BOTTOM" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_w11nl")
+one_way_collision_margin = 10.0
+
+[node name="OutOfBounds" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds"]
+position = Vector2(8, 8)
+shape = SubResource("SegmentShape2D_i4mig")
+debug_color = Color(0.988235, 0, 0, 1)
+
+[connection signal="hit" from="PongPlayer" to="." method="_on_pong_player_hit"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
